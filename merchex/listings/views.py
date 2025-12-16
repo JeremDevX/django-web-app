@@ -8,10 +8,12 @@ def hello(request):
                   {'bands': bands})
 
 def about(request):
-    return HttpResponse('<h1> A propos </h1> <p>Nous adorons merch !</p>')
+    return render(request, 'listings/about.html')
 
 def contact(request):
-    return HttpResponse('<h1> Contactez-nous </h1> <p>Envoyez-nous un email à contact@merchex.com</p>')
+    return render(request, 'listings/contact.html')
 
 def listings(request):
-    return HttpResponse('<h1> Listings de produits </h1> <p>Voici la liste de nos produits disponibles.</p>')
+    listings = Listing.objects.all()
+    return render(request, 'listings/listings.html',
+                  {'listings': listings})
