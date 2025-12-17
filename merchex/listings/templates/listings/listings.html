@@ -1,9 +1,17 @@
 {% extends 'listings/base.html' %}
 {% block content %}
-    <h1>Listings de merch</h1>
-    <ul>
-      {% for listing in listings %}
-      <li>{{ listing.title }}</li>
-      {% endfor %}
-    </ul>
+  <h1>Listings de merch</h1>
+  <ul>
+    {% for listing in listings %}
+    <li>
+      <a href="{% url 'listing-detail' listing.id %}">{{ listing.title }}</a>
+      <span>
+        <a href="{% url 'listing-update' listing.id %}">Modifier</a>
+        <a href="{% url 'listing-delete' listing.id %}">Supprimer</a>
+      </span>
+    </li>
+    {% empty %}
+    <li>Aucun listing pour le moment.</li>
+    {% endfor %}
+  </ul>
 {% endblock %}

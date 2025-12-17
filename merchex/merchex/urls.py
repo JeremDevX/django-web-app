@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+
 from listings import views
 
 urlpatterns = [
@@ -27,5 +28,9 @@ urlpatterns = [
     path('bands/<int:id>/delete/', views.band_delete, name="band-delete"),
     path('about-us/', views.about),
     path('contact-us/', views.contact, name='contact'),
-    path('listings/', views.listings),
+    path('listings/', views.listings, name='listings'),
+    path('listings/add/', views.listing_create, name='listing-create'),
+    path('listings/<int:id>/', views.listing_detail, name='listing-detail'),
+    path('listings/<int:id>/change/', views.listing_update, name='listing-update'),
+    path('listings/<int:id>/delete/', views.listing_delete, name='listing-delete'),
 ]
