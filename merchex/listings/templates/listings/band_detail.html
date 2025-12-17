@@ -1,6 +1,8 @@
 {% extends 'listings/base.html' %} {% block content %}
 
 <h2>{{ band.name }}</h2>
+      <a href="{% url 'band-update' band.id%}">Modifier</a>
+
 
 <ul>
   <li>Genre : {{ band.get_genre_display }}</li>
